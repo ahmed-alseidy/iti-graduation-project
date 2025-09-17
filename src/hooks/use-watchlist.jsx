@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 const STORAGE_KEY = "watchlist";
 
@@ -23,7 +23,9 @@ function writeWatchlist(items) {
   }
 }
 
-export function useWatchlist() {
+const WatchlistContext = createContext(null);
+
+export function WatchlistProvider({ children }) {
   const [items, setItems] = useState(() => readWatchlist());
 
   useEffect(() => {
@@ -55,5 +57,13 @@ export function useWatchlist() {
     });
   };
 
-  return { items, isSaved, add, remove, toggle };
+  return (
+    <WatchlistContext.Provider value={{ items, isSaved, add, remove, toggle }}>
+      {children}
+    </WatchlistContext.Provider>
+  );
+}
+
+export function useWatchlist() {
+  return useContext(WatchlistContext);
 }

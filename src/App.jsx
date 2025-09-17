@@ -10,7 +10,7 @@ import Home from "@/pages/home.jsx";
 import SearchPage from "@/pages/search.jsx";
 import Watchlist from "@/pages/watchlist.jsx";
 import { Badge } from "./components/ui/badge";
-import { useWatchlist } from "./hooks/use-watchlist";
+import { useWatchlist, WatchlistProvider } from "./hooks/use-watchlist";
 
 function Layout() {
   const { items } = useWatchlist();
@@ -51,7 +51,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <WatchlistProvider>
+      <RouterProvider router={router} />
+    </WatchlistProvider>
+  );
 }
 
 export default App;
