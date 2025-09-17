@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const STORAGE_KEY = "watchlist:v1";
+const STORAGE_KEY = "watchlist";
 
 function readWatchlist() {
   try {
