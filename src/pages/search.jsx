@@ -7,7 +7,7 @@ import { API_KEY, BASE_URL } from "@/config";
 import { MIN_PAGE, usePagination } from "@/hooks/use-pagination";
 
 const buildSearchUrl = (query, page) =>
-  `${BASE_URL}/search/movie?api_key=${API_KEY}&include_adult=false&query=${encodeURIComponent(
+  `${BASE_URL}/search/multi?api_key=${API_KEY}&include_adult=false&query=${encodeURIComponent(
     query
   )}&page=${page}`;
 
